@@ -19,11 +19,11 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-      - name: Preparar Gradle
-        uses: gradle/actions/setup-gradle@v4
-
       - name: Compilar APK
-        run: gradle assembleDebug
+        uses: gradle/gradle-build-action@v3
+        with:
+          gradle-version: '8.9'
+          arguments: assembleDebug
 
       - name: Guardar APK
         uses: actions/upload-artifact@v4
